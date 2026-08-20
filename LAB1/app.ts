@@ -110,7 +110,7 @@ class NotificadorBiblioteca {
 // Oyente encargado de manipular directamente las vistas del DOM
 class GestorUIBiblioteca {
     renderizarLibros(libros: Libro[]): void {
-        DOM.contenedorLibros.innerHTML = '';
+        DOM.contenedorLibros.querySelectorAll('.libro-card').forEach(card => card.remove());
 
         // Filtrado previo según los controles activos del estado de la aplicación
         let librosFiltrados = [...libros];
@@ -131,6 +131,8 @@ class GestorUIBiblioteca {
         }
 
        
+        this.actualizarContador(libros);
+
         if (librosFiltrados.length === 0) {
             DOM.emptyState.classList.remove('hidden');
             return;
@@ -160,9 +162,6 @@ class GestorUIBiblioteca {
             `;
             DOM.contenedorLibros.appendChild(card);
         });
-
-        // Re-sincronizar los contadores superiores globales
-        this.actualizarContador(libros);
     }
 
     actualizarContador(libros: Libro[]): void {
@@ -263,3 +262,20 @@ DOM.formLibro.addEventListener('submit', (e) => {e.preventDefault();
         gestorUI.renderizarLibros(biblioteca.obtenerTodos());});
         
         DOM.btnOrdenarTitulo.addEventListener('click', () => {ordenActual = 'titulo';gestorUI.renderizarLibros(biblioteca.obtenerTodos());});
+
+        DOM.btnOrdenarAutor.addEventListener('click', () => {ordenActual = 'autor';gestorUI.renderizarLibros(biblioteca.obtenerTodos());});
+
+        DOM.contenedorLibros.addEventListener('click', (e) => {
+            const objetivo = e.target as HTMLElement;
+            const boton = objetivo.closest('button');
+            if (!boton) return;
+
+            const id = Number(boton.dataset.id);
+            if (boton.classList.contains('btn-favorito')) {
+                biblioteca.conmutarFavorito(id);
+            } else if (boton.classList.contains('btn-prestar')) {
+                biblioteca.solicitarPrestamo(id);
+            } else if (boton.classList.contains('btn-devolver')) {
+                biblioteca.devolverLibro(id);
+            }
+        });
