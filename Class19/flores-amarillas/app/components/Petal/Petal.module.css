@@ -1,0 +1,34 @@
+.petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46%;
+  height: 58%;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    var(--color-petal-1) 0%,
+    var(--color-petal-2) 45%,
+    var(--color-petal-3) 100%
+  );
+  box-shadow: inset -2px -4px 8px var(--color-petal-shadow),
+    0 4px 12px rgba(0, 0, 0, 0.35);
+  transform-origin: center center;
+  will-change: transform;
+  transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-58%);
+  animation: bloom 0.9s var(--ease-spring) backwards;
+  animation-delay: var(--bloom-delay, 0s);
+}
+
+@keyframes bloom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-10%)
+      scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-58%)
+      scale(1);
+  }
+}

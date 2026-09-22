@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-night-1: #0b1026;
+  --color-night-2: #1b2350;
+  --color-night-3: #2a1f4a;
+
+  --color-petal-1: #fde047;
+  --color-petal-2: #facc15;
+  --color-petal-3: #eab308;
+  --color-petal-shadow: #b45309;
+
+  --color-center-1: #78350f;
+  --color-center-2: #451a03;
+
+  --color-text: #fef9c3;
+  --color-text-muted: #fde68a;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: radial-gradient(
+      ellipse at 20% 0%,
+      var(--color-night-3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 100%,
+      var(--color-night-2) 0%,
+      transparent 60%
+    ),
+    var(--color-night-1);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
