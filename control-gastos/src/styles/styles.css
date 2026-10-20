@@ -164,3 +164,127 @@ dialog .acciones { margin-top: 0; }
   .filtros { grid-template-columns: 1fr 1fr; }
   .filtros input { grid-column: 1 / -1; }
 }
+
+/* =====================================================================
+   Actualización: pestañas, banner, notificaciones, presupuestos, resumen
+   ===================================================================== */
+.contenedor { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 3rem); }
+.layout { max-width: none; padding: 0; margin: 1.25rem 0 3rem; }
+.layout[hidden], [role="tabpanel"][hidden] { display: none !important; }
+
+/* Pestañas */
+.tabs { display: flex; gap: .25rem; margin-top: 1.25rem; border-bottom: 2px solid var(--borde); overflow-x: auto; }
+.tab {
+  font: inherit; font-weight: 600; color: var(--tinta-suave); background: none; border: 0;
+  padding: .75rem 1.1rem; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap;
+}
+.tab:hover { color: var(--tinta); }
+.tab[aria-selected="true"] { color: var(--primario); border-bottom-color: var(--primario); }
+.tab:focus-visible { outline: 3px solid color-mix(in srgb, var(--primario) 45%, transparent); outline-offset: -3px; border-radius: 6px; }
+
+/* Banner de alerta de presupuesto */
+.banner {
+  margin-top: 1.25rem; padding: .85rem 1.1rem; border-radius: var(--radio);
+  background: var(--gasto-fondo); border: 1px solid var(--gasto); color: #7a1230;
+}
+.banner--aviso { background: #fdf3dc; border-color: #c98a00; color: #6b4700; }
+.banner ul { margin: .35rem 0 0; padding-left: 1.2rem; font-size: .9rem; }
+
+/* Notificaciones */
+.toasts { position: fixed; right: 1rem; bottom: 1rem; display: flex; flex-direction: column; gap: .5rem; z-index: 50; max-width: min(24rem, calc(100vw - 2rem)); }
+.toast {
+  display: flex; align-items: flex-start; gap: .75rem; padding: .75rem 1rem; border-radius: 8px;
+  background: var(--tinta); color: #fff; font-size: .9rem; box-shadow: 0 6px 20px rgba(23, 35, 59, .25);
+  border-left: 5px solid #8da2c0; animation: toast-entra .2s ease-out;
+}
+.toast--exito { border-left-color: #34d399; }
+.toast--error { border-left-color: #fb7185; }
+.toast--aviso { border-left-color: #fbbf24; }
+.toast--saliendo { opacity: 0; transition: opacity .2s; }
+.toast__cerrar { background: none; border: 0; color: inherit; font-size: 1.2rem; line-height: 1; cursor: pointer; opacity: .7; padding: 0; margin-left: auto; }
+.toast__cerrar:hover { opacity: 1; }
+@keyframes toast-entra { from { transform: translateY(8px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .toast { animation: none; } .toast--saliendo { transition: none; } }
+
+/* Filtros ampliados (fechas) */
+.filtros { grid-template-columns: repeat(4, 1fr); align-items: end; }
+.filtros__busqueda { grid-column: span 2; }
+.filtros__limpiar { grid-column: span 2; justify-self: end; }
+.campo--inline { margin: 0; }
+.error--general { display: block; margin-top: .25rem; }
+.error--general:empty { display: none; }
+.ayuda { margin: -.5rem 0 1rem; color: var(--tinta-suave); font-size: .88rem; }
+.panel__cabecera { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+input[type="month"] { font: inherit; padding: .6rem .7rem; border: 1px solid var(--borde); border-radius: 8px; background: #fff; color: var(--tinta); }
+
+/* Presupuestos */
+.presupuestos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .9rem; }
+.pres { border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem; display: flex; flex-direction: column; gap: .6rem; }
+.pres--excedido { border-color: var(--gasto); background: #fff8fa; }
+.pres__cab { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.pres__cab h3 { font-size: 1rem; }
+.pres__estado { font-size: .75rem; font-weight: 700; padding: .15rem .55rem; border-radius: 999px; white-space: nowrap; }
+.pres__estado--ok { background: var(--ingreso-fondo); color: var(--ingreso); }
+.pres__estado--cerca { background: #fdf3dc; color: #8a5a00; }
+.pres__estado--excedido { background: var(--gasto-fondo); color: var(--gasto); }
+.barra { height: 10px; border-radius: 999px; background: var(--fondo); overflow: hidden; }
+.barra__relleno { height: 100%; border-radius: 999px; background: var(--ingreso); }
+.pres--cerca .barra__relleno { background: #d99a00; }
+.pres--excedido .barra__relleno { background: var(--gasto); }
+.pres__detalle { margin: 0; font-size: .85rem; color: var(--tinta-suave); }
+.pres__acciones { display: flex; gap: .35rem; margin-top: auto; }
+
+/* Resumen mensual */
+.controles { display: flex; align-items: flex-end; gap: 1rem 1.5rem; flex-wrap: wrap; margin: 1.25rem 0 1rem; }
+.btn--auto { width: auto; margin-left: auto; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .9rem; margin-bottom: 1rem; }
+.stat { background: var(--superficie); border: 1px solid var(--borde); border-radius: var(--radio); padding: 1rem; display: flex; flex-direction: column; gap: .15rem; }
+.stat__etiqueta { font-size: .82rem; color: var(--tinta-suave); }
+.stat__valor { font-size: 1.35rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+#panel-resumen .panel { margin-bottom: 1rem; }
+#panel-resumen h2 { margin-bottom: 1rem; }
+
+.grafico { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .7rem; }
+.grafico__fila { display: grid; grid-template-columns: 8rem 1fr 11rem; align-items: center; gap: .75rem; font-size: .9rem; }
+.grafico__pista { height: 18px; background: var(--fondo); border-radius: 4px; overflow: hidden; }
+.grafico__barra { height: 100%; background: var(--gasto); border-radius: 4px; min-width: 3px; }
+.grafico__valor { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+.comparacion .comparacion__seccion td { font-weight: 700; }
+.comparacion .comparacion__subtitulo td { padding-top: 1.2rem; font-size: .8rem; font-weight: 600; color: var(--tinta-suave); border-bottom: 1px solid var(--borde); }
+.comparacion td:nth-child(n+2), .comparacion th:nth-child(n+2) { text-align: right; font-variant-numeric: tabular-nums; }
+.comparacion td:first-child { font-weight: 600; }
+
+@media (max-width: 880px) {
+  .filtros { grid-template-columns: 1fr 1fr; }
+  .filtros__busqueda, .filtros__limpiar { grid-column: 1 / -1; }
+  .filtros__limpiar { justify-self: stretch; }
+  .grafico__fila { grid-template-columns: 1fr; gap: .25rem; }
+  .grafico__valor { text-align: left; }
+  .btn--auto { width: 100%; margin-left: 0; }
+}
+
+/* Evita que el contenido ancho (tablas) empuje el ancho de la página */
+.panel { min-width: 0; }
+.layout { grid-template-columns: 340px minmax(0, 1fr); }
+@media (max-width: 880px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+.filtros > * { min-width: 0; }
+@media (max-width: 880px) { .filtros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tabla-wrap { position: relative; } /* contiene el texto .sr-only de las cabeceras */
+
+/* Encabezado alineado con el contenido */
+.topbar { padding-inline: 0; }
+.topbar > * { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 3rem); }
+
+/* Filtros: rejilla de 6 columnas para que ningún control quede apretado */
+.filtros { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.filtros__busqueda { grid-column: 1 / -1; }
+#filtro-tipo, #filtro-categoria { grid-column: span 3; }
+.filtros .campo--inline { grid-column: span 2; }
+.filtros__limpiar { grid-column: span 2; justify-self: end; }
+@media (max-width: 880px) {
+  .filtros { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #filtro-tipo, #filtro-categoria, .filtros__limpiar { grid-column: 1 / -1; }
+  .filtros .campo--inline { grid-column: span 1; }
+  .filtros__limpiar { justify-self: stretch; }
+}
