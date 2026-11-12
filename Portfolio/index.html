@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smith Méndez | Programador Full Stack</title>
+  <meta name="description" content="Portafolio de José Smith Méndez, programador Full Stack Junior: interfaces con React, proyectos desplegados y contacto." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip" href="#proyectos">Ir a proyectos</a>
+  <div class="wrapper">
+    <header class="header">
+      <a class="logo" href="#inicio" aria-label="Inicio">JSM</a>
+      <nav aria-label="Principal">
+        <ul class="menu">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="hello">Hola, soy Smith Méndez</p>
+          <h1>Programador<br />Full Stack</h1>
+          <p class="typed-line" aria-live="off">Me enfoco en: <span id="typed"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="lead">Construyo interfaces con React y las llevo a producción. Egresado del bootcamp Full Stack Junior de Kodigo y estudiante de Ingeniería en Desarrollo de Software.</p>
+          <div class="actions">
+            <a class="btn" href="#proyectos">Ver proyectos</a>
+            <a class="btn ghost" href="./Smith_Mendez_CV.pdf" download>Descargar CV</a>
+          </div>
+        </div>
+        <figure class="photo">
+          <img src="./images/Photo-Proffesional-Smith.jpeg" alt="Retrato de Smith Méndez" width="400" height="500" />
+        </figure>
+      </section>
+
+      <section id="sobre-mi" class="about reveal">
+        <h2>Sobre mí</h2>
+        <div class="about-grid">
+          <p>Soy de Chilanga, Morazán, y estudio tercer año de Ingeniería en Desarrollo de Software en la Universidad de Oriente (UNIVO). En 2025 completé el bootcamp Full Stack Junior de Kodigo y una pasantía de Front-End, donde trabajé con React, Git/GitHub y metodologías ágiles en equipo.</p>
+          <ul class="skills" aria-label="Tecnologías">
+            <li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li><li>Git y GitHub</li><li>Metodologías ágiles</li>
+          </ul>
+        </div>
+        <ol class="timeline">
+          <li><span>2025</span><div><strong>Bootcamp Full Stack Junior</strong> Kodigo, junio a diciembre</div></li>
+          <li><span>2025</span><div><strong>Pasantía en Desarrollo Front-End</strong> Kodigo, septiembre a noviembre</div></li>
+          <li><span>2024</span><div><strong>Ingeniería en Desarrollo de Software</strong> UNIVO, San Miguel (en curso)</div></li>
+        </ol>
+      </section>
+
+      <section id="proyectos" class="projects reveal">
+        <h2>Proyectos</h2>
+        <p class="section-note">Todos están en línea. Puedes abrirlos y probarlos.</p>
+        <ul class="project-list">
+          <li class="project" style="--c:#0aa5a5">
+            <div class="thumb" aria-hidden="true">VS</div>
+            <div class="info"><h3>Videogames Store</h3><p>Tienda de videojuegos con catálogo de productos.</p></div>
+            <a class="link" href="https://meek-smakager-b82877.netlify.app/" target="_blank" rel="noopener">Ver demo</a>
+          </li>
+          <li class="project" style="--c:#e0509f">
+            <div class="thumb" aria-hidden="true">LS</div>
+            <div class="info"><h3>Landing Store</h3><p>Página de aterrizaje para una tienda, adaptable a móvil.</p></div>
+            <a class="link" href="https://landing-store-wine.vercel.app" target="_blank" rel="noopener">Ver demo</a>
+          </li>
+          <li class="project" style="--c:#f2b134">
+            <div class="thumb" aria-hidden="true">CG</div>
+            <div class="info"><h3>Control de gastos</h3><p>Aplicación para registrar y controlar gastos personales.</p></div>
+            <a class="link" href="https://gastos-app-control.netlify.app" target="_blank" rel="noopener">Ver demo</a>
+          </li>
+          <li class="project" style="--c:#6c8cff">
+            <div class="thumb" aria-hidden="true">GU</div>
+            <div class="info"><h3>Gestión de usuarios</h3><p>Aplicación para administrar usuarios: alta, edición y consulta.</p></div>
+            <a class="link" href="https://gestion-usuario.netlify.app" target="_blank" rel="noopener">Ver demo</a>
+          </li>
+          <li class="project" style="--c:#8f6cf0">
+            <div class="thumb" aria-hidden="true">KM</div>
+            <div class="info"><h3>Kodigo Music</h3><p>Aplicación de una sola página con inicio de sesión.</p></div>
+            <a class="link" href="https://single-page-application-umber.vercel.app/login" target="_blank" rel="noopener">Ver demo</a>
+          </li>
+        </ul>
+        <a class="more" href="https://github.com/Smith-dev546" target="_blank" rel="noopener">Ver todo el código en GitHub</a>
+      </section>
+
+      <section id="contacto" class="contact reveal">
+        <h2>Contacto</h2>
+        <p class="section-note">Escríbeme y te respondo por correo.</p>
+        <form id="form" class="form">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" required />
+          <label for="correo">Correo</label>
+          <input id="correo" name="correo" type="email" placeholder="tucorreo@ejemplo.com" required />
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" maxlength="500" placeholder="Cuéntame qué necesitas" required></textarea>
+          <p id="contador" class="count" aria-live="polite">0 / 500</p>
+          <button class="btn" type="submit">Enviar mensaje</button>
+          <p id="estado" class="status" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Smith Méndez · Programador Full Stack · <span id="year">2026</span></p>
+      <p><a href="https://github.com/Smith-dev546" target="_blank" rel="noopener">GitHub</a> <a href="mailto:Smithmendez098@gmail.com">Smithmendez098@gmail.com</a></p>
+    </footer>
+  </div>
+
+  <button id="subir" class="up" type="button" aria-label="Volver arriba" hidden>↑</button>
+  <script src="./script.js" defer></script>
+</body>
+</html>

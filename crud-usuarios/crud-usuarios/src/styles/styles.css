@@ -1,0 +1,45 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0f172a, #0e3f68); min-height: 100vh; padding: 40px 20px; }
+.container { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 24px; padding: 35px; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+header { text-align: center; margin-bottom: 30px; }
+h1 { color: #0e3f68; font-size: 2em; }
+header p { color: #64748b; margin: 6px 0 12px; }
+h2 { color: #0e3f68; margin-bottom: 15px; }
+.card { background: #f8fafc; padding: 25px; border-radius: 16px; margin-bottom: 30px; }
+
+form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; }
+#authForm { grid-template-columns: 1fr 1fr auto auto; }
+input, select { padding: 12px 16px; border: 2px solid #e2e8f0; border-radius: 10px; font-size: 1em; }
+input:focus, select:focus { outline: none; border-color: #3b82f6; }
+
+button { padding: 12px 24px; background: #0e3f68; color: #fff; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all .2s; }
+button:hover:not(:disabled) { background: #1e4a7a; transform: translateY(-2px); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+.btn-secondary { background: #64748b; }
+
+.message { margin-bottom: 20px; padding: 10px 16px; border-radius: 8px; display: none; }
+.message.success { background: #dcfce7; color: #166534; display: block; }
+.message.error { background: #fee2e2; color: #991b1b; display: block; }
+
+.toolbar, .pager { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.toolbar { margin-bottom: 16px; }
+.toolbar input { flex: 1; min-width: 200px; }
+.pager { justify-content: space-between; margin-top: 16px; color: #64748b; }
+
+table { width: 100%; border-collapse: collapse; }
+thead { background: #0e3f68; color: #fff; }
+th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+tbody tr:hover { background: #f8fafc; }
+.empty { text-align: center; color: #94a3b8; font-style: italic; }
+
+.btn-edit, .btn-delete { padding: 6px 12px; border-radius: 6px; font-size: .85em; margin-right: 6px; }
+.btn-edit { background: #dbeafe; color: #1e40af; }
+.btn-edit:hover:not(:disabled) { background: #bfdbfe; }
+.btn-delete { background: #fee2e2; color: #991b1b; }
+.btn-delete:hover:not(:disabled) { background: #fecaca; }
+
+@media (max-width: 600px) {
+  form, #authForm { grid-template-columns: 1fr; }
+  table { font-size: .85em; }
+}

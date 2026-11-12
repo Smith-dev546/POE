@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD de Usuarios - SQLite + TypeScript</title>
+  <link rel="stylesheet" href="/src/styles/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🗄️ CRUD de Usuarios</h1>
+      <p id="modeLabel"></p>
+      <button id="logoutBtn" class="btn-secondary" hidden>🔒 Cerrar sesión</button>
+    </header>
+
+    <div id="message" class="message"></div>
+
+    <!-- Autenticación (solo modo API) -->
+    <section id="authSection" class="card" hidden>
+      <h2>Iniciar sesión</h2>
+      <form id="authForm">
+        <input type="email" id="authEmail" placeholder="correo@ejemplo.com" required autocomplete="username">
+        <input type="password" id="authPassword" placeholder="Contraseña (mín. 8)" minlength="8" required autocomplete="current-password">
+        <button type="submit">Entrar</button>
+        <button type="button" id="registerBtn" class="btn-secondary">Crear cuenta</button>
+      </form>
+    </section>
+
+    <div id="appSection">
+      <section class="card">
+        <h2>Agregar Usuario</h2>
+        <form id="userForm">
+          <input type="text" id="name" placeholder="Nombre completo" required maxlength="100">
+          <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+          <button type="submit">➕ Agregar Usuario</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Usuarios Registrados</h2>
+        <div class="toolbar">
+          <input type="search" id="search" placeholder="🔍 Buscar por nombre o email...">
+          <select id="pageSize" aria-label="Resultados por página">
+            <option value="5">5 / pág.</option>
+            <option value="10" selected>10 / pág.</option>
+            <option value="25">25 / pág.</option>
+            <option value="50">50 / pág.</option>
+          </select>
+          <button id="exportBtn" type="button">⬇️ CSV</button>
+        </div>
+        <table>
+          <thead><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Acciones</th></tr></thead>
+          <tbody id="userTableBody"></tbody>
+        </table>
+        <div class="pager">
+          <button id="prev" type="button">← Anterior</button>
+          <span id="pageInfo"></span>
+          <button id="next" type="button">Siguiente →</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
